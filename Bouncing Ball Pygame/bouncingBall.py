@@ -9,11 +9,11 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 FPS = 60
 
-BALL_WIDTH = 60
-BALL_HEIGHT = 60
+BALL_WIDTH = 30
+BALL_HEIGHT = 30
 
 ball_position = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
-ball_speed = pygame.Vector2(1, 1)  
+ball_speed = pygame.Vector2(7, 4)  
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
