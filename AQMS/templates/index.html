@@ -3,42 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="2">  <!--  Refresh every 1 second -->
+    <meta http-equiv="refresh" content="2"> <!-- Refresh every 2 seconds -->
     <title>AQMS Prototype</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .user-settings {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-settings div {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            background-color: #333;
+            color: white;
+            width: 220px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 60px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav h1 {
+            margin: 0;
+            padding: 15px;
+            font-size: 20px;
+            color: #fff;
+            background-color: #444;
+        }
+
+        nav li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        main {
+            margin-left: 240px;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        main div {
+            box-sizing: border-box;
+            width: calc(48% - 20px);
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 
     <header>
-        <div>AQMS PROTOTYPE</div>
+        <h1>Ambiance</h1>
+        <div class="user-settings">
+            <div>username</div>
+            <div>settings</div>
+        </div>
     </header>
 
     <nav>
-        
+        <ul>
+            <h1>Dashboard</h1>
+            <li>Sidebar Link 1</li>
+            <li>Sidebar Link 2</li>
+        </ul>
     </nav>
 
     <main>
-        <div>Temperature:</div>
-        <div>{{ temperature }}</div>
-        <div>Pressure:</div>
-        <div>{{ pressure }}</div>
-        <div>Humidity:</div>
-        <div>{{ humidity }}</div>
-        <div>Gas:</div>
-        <div>{{ gas }}</div>
-        <div>Altitude:</div>
-        <div>{{ altitude }}</div>
-        <div>TVOC:</div>
-        <div>{{ tvoc }}</div>
-        <div>eCO2:</div>
-        <div>{{ eco2 }}</div>
-        <div>Raw H2:</div>
-        <div>{{ raw_h2 }}</div>
-        <div>Raw_Ethanol:</div>
-        <div>{{ raw_ethanol }}</div>
+        <div>Temperature: {{ temperature }}</div>
+        <div>Pressure: {{ pressure }}</div>
+        <div>Humidity: {{ humidity }}</div>
+        <div>Gas: {{ gas }}</div>
+        <div>Altitude: {{ altitude }}</div>
+        <div>TVOC: {{ tvoc }}</div>
+        <div>eCO2: {{ eco2 }}</div>
+        <div>Raw H2: {{ raw_h2 }}</div>
+        <div>Raw Ethanol: {{ raw_ethanol }}</div>
     </main>
 
     <footer>
-       
+        &copy; 2024 AQMS Prototype
     </footer>
 
     <!-- Add any additional scripts or libraries here -->
