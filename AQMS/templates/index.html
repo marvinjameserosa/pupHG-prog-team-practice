@@ -5,42 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="2"> <!-- Refresh every 2 seconds -->
     <title>AQMS Prototype</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-        }
+</head>
+<style>
+    body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
 
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        h1 {
-            margin: 0;
-            font-size: 24px;
-            color: #fff;
-        }
+h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #fff;
+}
 
-        .user-settings {
-            display: flex;
-            align-items: center;
-        }
+.user-settings {
+    display: flex;
+    align-items: center;
+}
 
-        .user-settings div {
-            margin-left: 10px;
-            cursor: pointer;
-        }
+.user-settings div {
+    margin-left: 10px;
+    cursor: pointer;
+}
 
-        nav {
+nav {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 220px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 60px;
+}
+/* 
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav h1 {
+    margin: 0;
+    padding: 15px;
+    font-size: 20px;
+    color: #fff;
+} */
+
+nav {
             display: flex;
             flex-direction: column;
-            background-color: #333;
             color: white;
             width: 220px;
             height: 100vh;
@@ -56,50 +81,43 @@
             margin: 0;
         }
 
-        nav h1 {
-            margin: 0;
-            padding: 15px;
-            font-size: 20px;
-            color: #fff;
-            background-color: #444;
-        }
 
-        nav li {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-            cursor: pointer;
-        }
+.dashboard {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
 
-        main {
-            margin-left: 240px;
-            padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
+main {
+    margin-left: 240px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
-        main div {
-            box-sizing: border-box;
-            width: calc(48% - 20px);
-            margin-bottom: 20px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+.sensor-data {
+    box-sizing: border-box;
+    width: calc(48% - 20px);
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
-</head>
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+</style>
 <body>
 
     <header>
@@ -112,22 +130,22 @@
 
     <nav>
         <ul>
-            <h1>Dashboard</h1>
+            <li class="dashboard"><h1>Dashboard</h1></li>
             <li>Sidebar Link 1</li>
             <li>Sidebar Link 2</li>
         </ul>
     </nav>
 
     <main>
-        <div>Temperature: {{ temperature }}</div>
-        <div>Pressure: {{ pressure }}</div>
-        <div>Humidity: {{ humidity }}</div>
-        <div>Gas: {{ gas }}</div>
-        <div>Altitude: {{ altitude }}</div>
-        <div>TVOC: {{ tvoc }}</div>
-        <div>eCO2: {{ eco2 }}</div>
-        <div>Raw H2: {{ raw_h2 }}</div>
-        <div>Raw Ethanol: {{ raw_ethanol }}</div>
+        <div class="sensor-data">Temperature: {{ temperature }}</div>
+        <div class="sensor-data">Pressure: {{ pressure }}</div>
+        <div class="sensor-data">Humidity: {{ humidity }}</div>
+        <div class="sensor-data">Gas: {{ gas }}</div>
+        <div class="sensor-data">Altitude: {{ altitude }}</div>
+        <div class="sensor-data">TVOC: {{ tvoc }}</div>
+        <div class="sensor-data">eCO2: {{ eco2 }}</div>
+        <div class="sensor-data">Raw H2: {{ raw_h2 }}</div>
+        <div class="sensor-data">Raw Ethanol: {{ raw_ethanol }}</div>
     </main>
 
     <footer>
