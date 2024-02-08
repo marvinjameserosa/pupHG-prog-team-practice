@@ -1,45 +1,26 @@
-import csv
+import serial
 
-file_path = 'aqms_data.csv'
+def sensor_data():
+    try:
+        ser = serial.Serial(port='COM5', baudrate=9600)
+        print("Serial port opened successfully")
+    except serial.SerialException as e:
+        print("Failed to open serial port:", e)
+        return None
 
-def get_value(file_path, column_index):
-    values = []
+    try:
+        sensor_data_array = []
+        for _ in range(9):  
+            data_point = ser.readline().decode('utf-8').strip()
+            sensor_data_array.append(data_point)
+        
+        return sensor_data_array
+        
+    except serial.SerialException as e:
+        print("Error reading from serial port:", e)
+        return None
 
-    with open(file_path, 'r', encoding='utf-8', errors='ignore') as csv_file:
-        csv_reader = csv.reader(csv_file)
-        next(csv_reader, None)
-        for line_number, line in enumerate(csv_reader, start=1):
-            try:
-                values.append(float(line[column_index]))
-            except (ValueError, IndexError):
-                
-                continue
+    finally:
+        ser.close()
+        print("Serial port closed")
 
-    return values
-
-def temperature():
-    return(get_value(file_path, 0)[-1])
-
-def pressure():
-    return get_value(file_path, 1)[-1]
-
-def humidity():
-    return get_value(file_path, 2)[-1]
-
-def gas():
-    return get_value(file_path, 3)[-1]
-
-def altitude():
-    return get_value(file_path, 4)[-1]
-
-def tvoc():
-    return get_value(file_path, 5)[-1]
-
-def eco2():
-    return get_value(file_path, 6)[-1]
-
-def raw_h2():
-    return get_value(file_path, 7)[-1]
-
-def raw_ethanol():
-    return get_value(file_path, 8)[-1]

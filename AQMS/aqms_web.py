@@ -7,21 +7,23 @@ app = Flask(__name__)
 
 def update_data():
     while True:
-        time.sleep(2)
+        time.sleep(1)
+        sensor_data = aqms.sensor_data()
         try:
             app.config['current_data'] = {
-                'temperature': aqms.temperature(),
-                'pressure': aqms.pressure(),
-                'humidity': aqms.humidity(),
-                'gas': aqms.gas(),
-                'altitude': aqms.altitude(),
-                'tvoc': aqms.tvoc(),
-                'eco2': aqms.eco2(),
-                'raw_h2': aqms.raw_h2(),
-                'raw_ethanol': aqms.raw_ethanol()
+                'temperature': sensor_data[0]+'°C',
+                'pressure': sensor_data[1]+' hPa',
+                'humidity': sensor_data[2]+'%',
+                'gas': sensor_data[3],
+                'altitude': sensor_data[4] + ' m',
+                'tvoc': sensor_data[5] + ' ug/m3',
+                'eco2': sensor_data[6],
+                'raw_h2': sensor_data[7],
+                'raw_ethanol': sensor_data[8]
             }
         except Exception as e:
-            continue  
+            print("Error updating data:", e)
+            continue
 update_thread = threading.Thread(target=update_data)
 update_thread.daemon = True
 update_thread.start()
